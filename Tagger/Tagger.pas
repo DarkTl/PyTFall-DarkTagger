@@ -86,7 +86,6 @@ type
     procedure LoadName;
     procedure Delete;
     procedure Button3Click(Sender: TObject);
-    procedure Label1Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Normalize;
     function Valid(name: string):boolean;
@@ -142,7 +141,6 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure Image1Click(Sender: TObject);
-    procedure DBCheckBox1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -218,7 +216,7 @@ filelistbox1.Visible:=true;
 result:=true;
 end;
 
-function TForm1.customask:string;
+function TForm1.customask:string; //function creates a file mask based on se;ected tags flags
 var A,B:string; i:integer;
 begin
  A:= formulate;
@@ -232,7 +230,7 @@ begin
  result:=B;
 end;
 
-function TForm1.formulate:string;  //function reads all flags and returns string of tags
+function TForm1.formulate:string;  //function reads all flags and returns a string of tags
 var s:string;
 begin
  s:='';
@@ -455,13 +453,13 @@ begin
  result:=s;
 end;
 
-procedure TForm1.Image1Click(Sender: TObject);
+procedure TForm1.Image1Click(Sender: TObject); //refreshing picture by click on it
 begin
  ext:= ExtractFileExt(FileListBox1.FileName);
  if ext <> '' then Image1.Picture.LoadFromFile(FileListBox1.FileName);
 end;
 
-procedure TForm1.Watcher;
+procedure TForm1.Watcher; // uptading window title when we move from one picture to another
 var i,j,k:integer;
 begin
  if FileListBox1.ItemIndex<>-1 then i:=FileListBox1.ItemIndex+1 else i:=0;
@@ -470,7 +468,7 @@ begin
  Form1.Caption:='DarkTagger '+ inttostr(i)+'/'+inttostr(j)+' '+inttostr(k)+'%';
 end;
 
-procedure TForm1.SelectGuySex;
+procedure TForm1.SelectGuySex; //showing male sex tags
 var i:integer;
 begin
  checklistbox11.Visible:=false;
@@ -479,7 +477,7 @@ begin
  checklistbox10.Visible:=true;
 end;
 
-procedure TForm1.SelectGirlSex;
+procedure TForm1.SelectGirlSex; //showing female sex tags
 var i:integer;
 begin
  checklistbox10.Visible:=false;
@@ -488,14 +486,14 @@ begin
  checklistbox11.Visible:=true;
 end;
 
-procedure TForm1.ClearOutdoors;
+procedure TForm1.ClearOutdoors; // resets outdoors flags
 begin
   groupbox5.Visible:=false;
   radiogroup10.ItemIndex:=-1;
   checkbox6.Checked:=false;
 end;
 
-procedure TForm1.ClearIndoors;
+procedure TForm1.ClearIndoors; // resets indoors flags
 begin
   radiogroup4.Visible:=false;
   radiogroup4.ItemIndex:=-1;
@@ -555,7 +553,7 @@ begin
    checklistbox7.Checked[i]:=false; 
 end;
 
-procedure TForm1.ClearSex;
+procedure TForm1.ClearSex; //reset all sex flags
 var i:integer;
 begin
   groupbox7.Visible:=false;
@@ -643,11 +641,6 @@ begin
 if not(k) then buttonSelected := MessageDlg('There are more than 65535 tagged files in the current folder!', mtError, [mbOK], 0);
 end; //and if there is no a free hex number from 0 to ffff, then there are too many pictures
 
-procedure TForm1.DBCheckBox1Click(Sender: TObject);
-begin
- if True then
-
-end;
 
 procedure TForm1.Delete; //deleting a selected file
 var i:integer;
@@ -722,14 +715,6 @@ begin
   FileListBox1.Update;
  end;
 end;
-
-procedure TForm1.Label1Click(Sender: TObject);
-var i:integer;
-begin
-
-end;
-
-
 
 procedure TForm1.LoadName; //for loading tags from file name
 var i,j:integer;
@@ -958,7 +943,7 @@ begin
   Image1.Picture.LoadFromFile(FileListBox1.FileName);
 end;
 
-procedure TForm1.BitBtn1Click(Sender: TObject);
+procedure TForm1.BitBtn1Click(Sender: TObject); // arrow up
 begin
 if FileListBox1.ItemIndex=-1 then FileListBox1.ItemIndex:=0 else begin
 if (FileListBox1.ItemIndex>0) then FileListBox1.ItemIndex:=FileListBox1.ItemIndex-1 else Filelistbox1.SetFocus; end;
@@ -972,7 +957,7 @@ begin
 end;
 end;
 
-procedure TForm1.BitBtn2Click(Sender: TObject);
+procedure TForm1.BitBtn2Click(Sender: TObject); // arrow down
 begin
 if FileListBox1.ItemIndex=-1 then FileListBox1.ItemIndex:=0 else begin
 if (FileListBox1.ItemIndex>-1) then FileListBox1.ItemIndex:=FileListBox1.ItemIndex+1 else Filelistbox1.SetFocus; end;
@@ -1004,7 +989,7 @@ image1.Picture:=nil;
 Filelistbox1.SetFocus;
 end;
 
-procedure TForm1.Button2Click(Sender: TObject);
+procedure TForm1.Button2Click(Sender: TObject); //saving button
 var i:integer;
 begin
 if filelistbox1.ItemIndex<>-1 then
@@ -1021,7 +1006,7 @@ Edit1.Text:= ExtractFileNameWithoutExt(Filelistbox1.FileName);
 Watcher;
 end;
 
-procedure TForm1.Button3Click(Sender: TObject); //for clearing all tags and renaming files by default
+procedure TForm1.Button3Click(Sender: TObject); //button clearing all tags and renaming files by default
 var i:integer;
 begin
 buttonSelected := MessageDlg('This will rename all files in the folder and remove all tags from them. Continue?',mtCustom,[mbYes,mbCancel], 0);
@@ -1045,7 +1030,7 @@ end;
 Filelistbox1.SetFocus;
 end;
 
-procedure TForm1.Button4Click(Sender: TObject);
+procedure TForm1.Button4Click(Sender: TObject); //delete button
 begin
 if FileListBox1.ItemIndex<>-1 then Delete;
 if (FileListBox1.ItemIndex<>-1) and (FileListBox1.FileName<>'') then LoadName;
@@ -1054,13 +1039,13 @@ Watcher;
 Edit1.Text:= ExtractFileNameWithoutExt(Filelistbox1.FileName);
 end;
 
-procedure SelectFileInExplorer(const Fn: string);
+procedure SelectFileInExplorer(const Fn: string); //windows api call for selecting a file in a folder
 begin
   ShellExecute(Application.Handle, 'open', 'explorer.exe',
     PChar('/select,"' + Fn+'"'), nil, SW_NORMAL);
 end;
 
-procedure TForm1.Button5Click(Sender: TObject);
+procedure TForm1.Button5Click(Sender: TObject); // normalize button
 begin
 buttonSelected := MessageDlg('This will rename all untagged files in the folder. Continue?',mtCustom,[mbYes,mbCancel], 0);
 if buttonSelected = mrYes then
@@ -1068,12 +1053,12 @@ if buttonSelected = mrYes then
 Filelistbox1.SetFocus;
 end;
 
-procedure TForm1.Button6Click(Sender: TObject);
+procedure TForm1.Button6Click(Sender: TObject); // reset tags button
 begin
  clearall;
 end;
 
-procedure TForm1.Button7Click(Sender: TObject);
+procedure TForm1.Button7Click(Sender: TObject); // refreshing the filelist with the button
 var i:integer;
 begin
  i:=filelistbox1.ItemIndex;
@@ -1082,7 +1067,7 @@ begin
  Watcher;
 end;
 
-procedure TForm1.Button8Click(Sender: TObject);
+procedure TForm1.Button8Click(Sender: TObject); // generate mask button
 begin
 MaskEdit1.Text:= Customask;
 if radiogroup11.ItemIndex=3 then
@@ -1092,14 +1077,14 @@ if radiogroup11.ItemIndex=3 then
  end;
 end;
 
-procedure TForm1.Button9Click(Sender: TObject);
+procedure TForm1.Button9Click(Sender: TObject); // show file button
 begin
 if filelistbox1.ItemIndex<>-1 then
 SelectFileInExplorer(filelistbox1.FileName);
 end;
 
-procedure TForm1.CheckBox10Click(Sender: TObject);
-var i:integer;
+procedure TForm1.CheckBox10Click(Sender: TObject); // stuff below makes the panel around save button red when you clisk any tag flag
+var i:integer;                                     // and also makes groups of flags appear and disappear when needed
 begin
  if filelistbox1.Count>0 then panel1.Color:=clred;
  if checkbox10.Checked then checklistbox5.Visible:=true else
@@ -1180,6 +1165,8 @@ end;
 procedure TForm1.CheckListBox10Click(Sender: TObject);
 begin
 if filelistbox1.Count>0 then panel1.Color:=clred;
+if checklistbox10.Checked[2] and not(checklistbox10.Checked[1]) then checklistbox10.Checked[1]:= True; // makes sure we have dt together with bj
+
 end;
 
 procedure TForm1.CheckListBox11Click(Sender: TObject);
@@ -1241,13 +1228,13 @@ end;
 
 
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TForm1.FormCreate(Sender: TObject); // creating form
 var
 color_one, color_two: Tcolor;
 begin
- if FileExists(ExtractFileDir(ExtractFilePath(ParamStr(0)))+'\settings.ini') then
+ if FileExists(ExtractFileDir(ExtractFilePath(ParamStr(0)))+'\settings.ini') then // if ini file exists in the folder
  begin
-  IniFile:=TIniFile.Create(ExtractFileDir(ExtractFilePath(ParamStr(0)))+'\settings.ini');
+  IniFile:=TIniFile.Create(ExtractFileDir(ExtractFilePath(ParamStr(0)))+'\settings.ini'); // then we read settings and use them
   exename := IniFile.ReadString('Edit', 'Path', getcurrentdir);
   color_one := TColor(RGB(IniFile.ReadInteger('Form', 'Form_Color_R', 0),IniFile.ReadInteger('Form', 'Form_Color_G', 0),IniFile.ReadInteger('Form', 'Form_Color_B', 0)));
   color_two := TColor(RGB(IniFile.ReadInteger('Form', 'Edit_Color_R', 0),IniFile.ReadInteger('Form', 'Edit_Color_G', 0),IniFile.ReadInteger('Form', 'Edit_Color_B', 0)));
@@ -1297,7 +1284,7 @@ begin
  dir := ExtractFileDir(Application.ExeName);
 end;
 
-procedure TForm1.FormResize(Sender: TObject);
+procedure TForm1.FormResize(Sender: TObject); // when the window is resized, we resize some stuff on it
 begin
  Image1.Height:=640+(form1.Height-690);
  Image1.Width:=475+(form1.Width-1250);
@@ -1309,7 +1296,7 @@ begin
 if filelistbox1.Count>0 then panel1.Color:=clred;
 end;
 
-procedure TForm1.RadioGroup11Click(Sender: TObject);
+procedure TForm1.RadioGroup11Click(Sender: TObject); // masks logics
 begin
  if radiogroup11.ItemIndex=0 then
  begin
@@ -1330,7 +1317,7 @@ begin
  FileListBox1.Update;
 end;
 
-procedure TForm1.RadioGroup1Click(Sender: TObject);
+procedure TForm1.RadioGroup1Click(Sender: TObject);  // more stuff to make flags panels work
 begin
 if (radiogroup1.ItemIndex=1) or (radiogroup1.ItemIndex=2) or (radiogroup1.ItemIndex=0) then
  begin
