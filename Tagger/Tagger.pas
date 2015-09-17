@@ -457,6 +457,7 @@ procedure TForm1.Image1Click(Sender: TObject); //refreshing picture by click on 
 begin
  ext:= ExtractFileExt(FileListBox1.FileName);
  if ext <> '' then Image1.Picture.LoadFromFile(FileListBox1.FileName);
+ Filelistbox1.SetFocus;
 end;
 
 procedure TForm1.Watcher; // uptading window title when we move from one picture to another
@@ -954,6 +955,7 @@ begin
  LoadName;
  Edit1.Text:= ExtractFileNameWithoutExt(Filelistbox1.FileName);
  Watcher;
+ Filelistbox1.SetFocus;
 end;
 end;
 
@@ -968,6 +970,7 @@ begin
  LoadName;
  Edit1.Text:= ExtractFileNameWithoutExt(Filelistbox1.FileName);
  Watcher;
+ Filelistbox1.SetFocus;
 end;
 end;
 
@@ -1065,6 +1068,7 @@ begin
  FileListBox1.Update;
  filelistbox1.ItemIndex:=i;
  Watcher;
+ Filelistbox1.SetFocus;
 end;
 
 procedure TForm1.Button8Click(Sender: TObject); // generate mask button
@@ -1075,12 +1079,14 @@ if radiogroup11.ItemIndex=3 then
    filelistbox1.Mask:=maskedit1.Text;
    FileListBox1.Update;
  end;
+Filelistbox1.SetFocus;
 end;
 
 procedure TForm1.Button9Click(Sender: TObject); // show file button
 begin
 if filelistbox1.ItemIndex<>-1 then
 SelectFileInExplorer(filelistbox1.FileName);
+Filelistbox1.SetFocus;
 end;
 
 procedure TForm1.CheckBox10Click(Sender: TObject); // stuff below makes the panel around save button red when you clisk any tag flag
