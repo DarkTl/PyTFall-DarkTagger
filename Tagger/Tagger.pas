@@ -79,6 +79,7 @@ type
     Panel2: TPanel;
     ProgressBar1: TProgressBar;
     Button9: TButton;
+    Button10: TButton;
     procedure Button1Click(Sender: TObject);
     procedure FileListBox1Change(Sender: TObject);
     procedure ShowImage;
@@ -91,7 +92,6 @@ type
     function Valid(name: string):boolean;
     function Avail(ext:string):string;
     procedure Button5Click(Sender: TObject);
-    procedure RadioGroup3Click(Sender: TObject);
     procedure RadioGroup1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure CheckBox10Click(Sender: TObject);
@@ -141,6 +141,8 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure Image1Click(Sender: TObject);
+    procedure RadioGroup3Enter(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -940,7 +942,7 @@ end;
 procedure TForm1.ShowImage; //showing currently selected picture
 begin
  ext:= ExtractFileExt(FileListBox1.FileName);
- if ext <> '' then
+ if (ext = '.jpg') or (ext = '.jpeg') or (ext = '.png') then
   Image1.Picture.LoadFromFile(FileListBox1.FileName);
 end;
 
@@ -974,6 +976,11 @@ begin
 end;
 end;
 
+
+procedure TForm1.Button10Click(Sender: TObject);
+begin
+ RadioGroup2.ItemIndex:=-1;
+end;
 
 procedure TForm1.Button1Click(Sender: TObject); //for selecting a folder
 begin
@@ -1354,15 +1361,14 @@ if radiogroup1.ItemIndex>3 then
  end;
 end;
 
-procedure TForm1.RadioGroup3Click(Sender: TObject);
+
+procedure TForm1.RadioGroup3Enter(Sender: TObject);
 begin
  if filelistbox1.Count>0 then panel1.Color:=clred;
  ClearIndoors;
  ClearOutdoors;
  checkbox3.Checked:=false;
  checkbox4.Checked:=false;
- RadioGroup3.Visible:=false;
- RadioGroup3.Visible:=true;
 end;
 
 procedure TForm1.RadioGroup7Click(Sender: TObject);

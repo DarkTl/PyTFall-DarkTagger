@@ -276,7 +276,7 @@ object Form1: TForm1
         'Pool'
         'Stage')
       TabOrder = 4
-      OnClick = RadioGroup3Click
+      OnEnter = RadioGroup3Enter
     end
   end
   object RadioGroup4: TRadioGroup
@@ -901,6 +901,18 @@ object Form1: TForm1
     ShowHint = True
     TabOrder = 31
     OnClick = Button9Click
+  end
+  object Button10: TButton
+    Left = 730
+    Top = 12
+    Width = 19
+    Height = 21
+    Hint = 'Remove special clothes tag'
+    Caption = 'X'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 32
+    OnClick = Button10Click
   end
   object FileOpenDialog1: TFileOpenDialog
     FavoriteLinks = <>
