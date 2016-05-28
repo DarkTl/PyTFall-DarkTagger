@@ -368,7 +368,7 @@ object Form1: TForm1
     Items.Strings = (
       'Actions:'
       'Striptease '
-      'Bathing'
+      'Bath/Swim'
       'Cleaning'
       'Cooking'
       'Dancing'
@@ -431,13 +431,13 @@ object Form1: TForm1
     HeaderBackgroundColor = clInactiveCaption
     Items.Strings = (
       'Masturbation:'
-      'Anal beads'
-      'Anal plug'
+      'Anal Beads'
+      'Anal Plug'
       'Dildo'
-      'Other toy'
-      'Hand and such'
+      'Other Toy'
+      'Hand and Such'
       'Vibrator'
-      'Tits vibrator'
+      'Tits Vibrator'
       'Forced')
     Style = lbOwnerDrawFixed
     TabOrder = 16
@@ -669,14 +669,14 @@ object Form1: TForm1
       HeaderBackgroundColor = clInactiveCaption
       Items.Strings = (
         'Sex to girl:'
-        'Anal fingering'
-        'Vaginal fingering'
-        'Lick anus'
-        'Lick pussy'
+        'Anal Handjob'
+        'Vaginal Handjob'
+        'Lick Anus'
+        'Lick Pussy'
         'Anal Toy'
         'Vaginal Toy'
-        'Anus fucked'
-        'Pussy fucked'
+        'Anus Fucked'
+        'Pussy Fucked'
         'Kissed'
         'Hugged'
         'Caress tits')
@@ -714,19 +714,19 @@ object Form1: TForm1
       HeaderBackgroundColor = clInactiveCaption
       Items.Strings = (
         'Performed by girl:'
-        'Anal handjob'
-        'Vaginal handjob'
-        'Anal footjob'
-        'Vaginal footjob'
-        'Lick anus'
-        'Lick pussy'
-        'Fuck anal'
-        'Fuck pussy'
-        'Toy anal'
-        'Toy pussy'
+        'Anal Handjob'
+        'Vaginal Handjob'
+        'Anal Footjob'
+        'Vaginal Footjob'
+        'Lick Anus'
+        'Lick Pussy'
+        'Anal Fucked'
+        'Pussy Fucked'
+        'Anal Toy'
+        'Vaginal Toy'
         'Kiss'
         'Hug'
-        'Caress tits')
+        'Caress Tits')
       Style = lbOwnerDrawVariable
       TabOrder = 5
       Visible = False
