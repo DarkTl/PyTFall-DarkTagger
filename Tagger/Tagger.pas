@@ -686,7 +686,7 @@ begin
  for i:= 0 to j-1 do
   begin
    Progressbar1.Position:=Round(100*i/j);
-   s:=Avail(ExtractFileExt(map[i]));
+   s:=Avail(LowerCase(ExtractFileExt(map[i])));
    RenameFile(map[i], s);
    FileListBox1.Update;
   end;
@@ -942,7 +942,7 @@ end;
 procedure TForm1.ShowImage; //showing currently selected picture
 begin
  ext:= ExtractFileExt(FileListBox1.FileName);
- if (ext = '.jpg') or (ext = '.jpeg') or (ext = '.png') then
+ if (LowerCase(ext) = '.jpg') or (LowerCase(ext) = '.jpeg') or (LowerCase(ext) = '.png') then
   Image1.Picture.LoadFromFile(FileListBox1.FileName);
 end;
 
@@ -1029,7 +1029,7 @@ begin
   for i:= 0 to FileListBox1.Items.Count-1 do
    begin
     FileListBox1.ItemIndex:=i;
-    nname:= IntToHex(i, 4) + ExtractFileExt(FileListBox1.FileName);
+    nname:= IntToHex(i, 4) + LowerCase(ExtractFileExt(FileListBox1.FileName));
     Progressbar1.Position:=Round(100*i/FileListBox1.Count);
     RenameFile(FileListBox1.FileName, nname);
    end;
