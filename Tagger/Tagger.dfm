@@ -19,6 +19,18 @@ object Form1: TForm1
   OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
+  object Image2: TImage
+    Left = 755
+    Top = 3
+    Width = 475
+    Height = 640
+    Hint = 'Click to reload the image'
+    Center = True
+    ParentShowHint = False
+    Proportional = True
+    ShowHint = True
+    OnClick = Image1Click
+  end
   object Image1: TImage
     Left = 755
     Top = 3
@@ -913,6 +925,20 @@ object Form1: TForm1
     ShowHint = True
     TabOrder = 32
     OnClick = Button10Click
+  end
+  object RadioGroup12: TRadioGroup
+    Left = 675
+    Top = 436
+    Width = 74
+    Height = 92
+    Caption = 'BG color'
+    ItemIndex = 0
+    Items.Strings = (
+      'Invisible'
+      'Black'
+      'White')
+    TabOrder = 33
+    OnClick = RadioGroup12Click
   end
   object FileOpenDialog1: TFileOpenDialog
     FavoriteLinks = <>

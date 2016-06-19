@@ -80,6 +80,8 @@ type
     ProgressBar1: TProgressBar;
     Button9: TButton;
     Button10: TButton;
+    Image2: TImage;
+    RadioGroup12: TRadioGroup;
     procedure Button1Click(Sender: TObject);
     procedure FileListBox1Change(Sender: TObject);
     procedure ShowImage;
@@ -143,6 +145,8 @@ type
     procedure Image1Click(Sender: TObject);
     procedure RadioGroup3Enter(Sender: TObject);
     procedure Button10Click(Sender: TObject);
+    procedure Button11Click(Sender: TObject);
+    procedure RadioGroup12Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -982,6 +986,12 @@ begin
  RadioGroup2.ItemIndex:=-1;
 end;
 
+procedure TForm1.Button11Click(Sender: TObject);
+begin
+  Image2.Canvas.Brush.Color:= ($FFFFFF);
+  image2.Canvas.Rectangle(0,0,image1. Width,image1.Height);
+end;
+
 procedure TForm1.Button1Click(Sender: TObject); //for selecting a folder
 begin
  with TFileOpenDialog.Create(nil) do
@@ -1301,7 +1311,16 @@ procedure TForm1.FormResize(Sender: TObject); // when the window is resized, we 
 begin
  Image1.Height:=640+(form1.Height-690);
  Image1.Width:=475+(form1.Width-1250);
+ Image2.Height:=Image1.Height;
+ Image2.Width:=Image1.Width;
  FileListBox1.Height:=657+(form1.Height-690);
+ Image2.Picture := nil;
+ if radiogroup12.ItemIndex >0 then
+  begin
+    if radiogroup12.ItemIndex = 1 then Image2.Canvas.Brush.Color:= ($000000) else Image2.Canvas.Brush.Color:= ($FFFFFF);
+    with Image2.Canvas do
+     FillRect(Rect(0, 0, ClipRect.Right, ClipRect.Bottom));
+  end
 end;
 
 procedure TForm1.RadioGroup10Click(Sender: TObject);
@@ -1328,6 +1347,17 @@ begin
    filelistbox1.Mask:=maskedit1.Text;
  end;
  FileListBox1.Update;
+end;
+
+procedure TForm1.RadioGroup12Click(Sender: TObject);
+begin
+ Image2.Picture := nil;
+ if radiogroup12.ItemIndex >0 then
+  begin
+    if radiogroup12.ItemIndex = 1 then Image2.Canvas.Brush.Color:= ($000000) else Image2.Canvas.Brush.Color:= ($FFFFFF);
+    with Image2.Canvas do
+     FillRect(Rect(0, 0, ClipRect.Right, ClipRect.Bottom));
+  end
 end;
 
 procedure TForm1.RadioGroup1Click(Sender: TObject);  // more stuff to make flags panels work
