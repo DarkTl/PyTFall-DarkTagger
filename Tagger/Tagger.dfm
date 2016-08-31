@@ -867,7 +867,10 @@ object Form1: TForm1
     Top = 624
     Width = 48
     Height = 25
+    Hint = 'Previous picture'
     Caption = 'Up'
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 28
     OnClick = BitBtn1Click
   end
@@ -876,7 +879,10 @@ object Form1: TForm1
     Top = 624
     Width = 47
     Height = 25
+    Hint = 'Next picture'
     Caption = 'Down'
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 29
     OnClick = BitBtn2Click
   end
@@ -931,12 +937,15 @@ object Form1: TForm1
     Top = 436
     Width = 74
     Height = 92
+    Hint = 'Image background color'
     Caption = 'BG color'
     ItemIndex = 0
     Items.Strings = (
       'Invisible'
       'Black'
       'White')
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 33
     OnClick = RadioGroup12Click
   end
