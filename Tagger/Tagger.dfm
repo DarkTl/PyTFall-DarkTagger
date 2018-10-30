@@ -118,7 +118,7 @@ object Form1: TForm1
     DoubleBuffered = False
     FileType = [ftReadOnly, ftHidden, ftNormal]
     ItemHeight = 13
-    Mask = '*.jpg;*png;*.jpeg'
+    Mask = '*.jpg;*png;*.jpeg;*.webp'
     ParentDoubleBuffered = False
     TabOrder = 0
     OnChange = FileListBox1Change
@@ -652,7 +652,7 @@ object Form1: TForm1
     end
     object CheckListBox8: TCheckListBox
       Left = 3
-      Top = 95
+      Top = 105
       Width = 78
       Height = 169
       Color = clMenu
@@ -763,6 +763,15 @@ object Form1: TForm1
       Caption = 'Restrained'
       TabOrder = 7
       OnClick = CheckBox22Click
+    end
+    object CheckBox23: TCheckBox
+      Left = 3
+      Top = 87
+      Width = 89
+      Height = 17
+      Caption = 'MC only'
+      TabOrder = 8
+      OnClick = CheckBox19Click
     end
   end
   object CheckListBox2: TCheckListBox

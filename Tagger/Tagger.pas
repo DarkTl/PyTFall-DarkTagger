@@ -82,6 +82,7 @@ type
     Button10: TButton;
     Image2: TImage;
     RadioGroup12: TRadioGroup;
+    CheckBox23: TCheckBox;
     procedure Button1Click(Sender: TObject);
     procedure FileListBox1Change(Sender: TObject);
     procedure ShowImage;
@@ -147,6 +148,7 @@ type
     procedure Button10Click(Sender: TObject);
     procedure Button11Click(Sender: TObject);
     procedure RadioGroup12Click(Sender: TObject);
+    procedure CheckBox23Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -159,6 +161,9 @@ var
   mfile: file;
   buttonSelected: integer;
   IniFile: TIniFile;
+  FS : TMemoryStream;
+  SL : TStringlist;
+  DataPointer: ^TMemoryStream;
 
 
   function HexToInt(s: string):integer;
@@ -360,6 +365,7 @@ begin
    begin
      s:=s+'-ns';
      if checkbox19.Checked then s:=s+'-p3';
+     if checkbox23.Checked then s:=s+'-p4';
      if checklistbox8.Checked[1] then s:=s+'-s1';
      if checklistbox8.Checked[2] then s:=s+'-s2';
      if checklistbox8.Checked[3] then s:=s+'-s3';
@@ -566,6 +572,7 @@ begin
   groupbox7.Visible:=false;
   radiogroup9.ItemIndex:=-1;
   checkbox19.Checked:=false;
+  checkbox23.Checked:=false;
   for i:=1 to 9 do
    checklistbox8.Checked[i]:=false;
   for i:=1 to 11 do
@@ -846,6 +853,7 @@ begin
 
      if MatchText('ns',ctags) then radiogroup7.ItemIndex:=0; //normal sex
      if MatchText('p3',ctags) then checkbox19.Checked:=true;
+     if MatchText('p4',ctags) then checkbox23.Checked:=true;
      if MatchText('s1',ctags) then checklistbox8.Checked[1]:=true;
      if MatchText('s2',ctags) then checklistbox8.Checked[2]:=true;
      if MatchText('s3',ctags) then checklistbox8.Checked[3]:=true;
@@ -947,7 +955,7 @@ procedure TForm1.ShowImage; //showing currently selected picture
 begin
  ext:= ExtractFileExt(FileListBox1.FileName);
  if (LowerCase(ext) = '.jpg') or (LowerCase(ext) = '.jpeg') or (LowerCase(ext) = '.png') then
-  Image1.Picture.LoadFromFile(FileListBox1.FileName);
+  Image1.Picture.LoadFromFile(FileListBox1.FileName)
 end;
 
 procedure TForm1.BitBtn1Click(Sender: TObject); // arrow up
@@ -1133,6 +1141,11 @@ if filelistbox1.Count>0 then panel1.Color:=clred;
 end;
 
 procedure TForm1.CheckBox22Click(Sender: TObject);
+begin
+if filelistbox1.Count>0 then panel1.Color:=clred;
+end;
+
+procedure TForm1.CheckBox23Click(Sender: TObject);
 begin
 if filelistbox1.Count>0 then panel1.Color:=clred;
 end;
