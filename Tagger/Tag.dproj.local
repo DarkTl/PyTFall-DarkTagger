@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.707,D:\Pytfall\Tagger\Tagger.dfm=C:\Users\1\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.574,D:\Pytfall\Tagger\Tag.dproj=C:\Users\1\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.707,D:\Pytfall\Tagger\Tagger.pas=C:\Users\1\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.740,=C:\Users\1\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2018.04.13 17:27:07.614,=D:\Pytfall\Dark Project\Tagger\libwebp.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.707,D:\Pytfall\Tagger\Tagger.dfm=C:\Users\1\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.574,D:\Pytfall\Tagger\Tag.dproj=C:\Users\1\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.614,=D:\Pytfall\Dark Project\Tagger\libwebp.pas</Transaction>
   </Transactions>
 </BorlandProject>

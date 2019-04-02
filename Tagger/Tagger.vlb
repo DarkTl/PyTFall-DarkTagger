@@ -12,7 +12,7 @@ Visible=True
 Coordinates=10,10,53,51
 
 []
-Coordinates=614,259,88,33
+Coordinates=155,289,79,51
 Visible=True
 
 [Button3]
@@ -63,12 +63,6 @@ Coordinates=343,272,70,51
 
 [CheckListBox3]
 Coordinates=525,378,88,33
-
-[RadioGroup2]
-Coordinates=155,289,79,51
-
-[RadioGroup3]
-Coordinates=481,1,79,51
 
 [CheckListBox4]
 Coordinates=347,378,88,33

@@ -43,13 +43,15 @@ object Form1: TForm1
     ShowHint = True
     OnClick = Image1Click
   end
-  object RadioGroup2: TRadioGroup
+  object CheckListBox12: TCheckListBox
     Left = 658
     Top = 0
     Width = 91
-    Height = 248
-    Caption = 'Special Clothes'
+    Height = 265
+    Color = clMenu
+    HeaderBackgroundColor = clInactiveCaption
     Items.Strings = (
+      'Special clothes:'
       'no clothes'
       'lingerie'
       'armor'
@@ -65,7 +67,8 @@ object Form1: TForm1
       'cow'
       'dog'
       'ninja')
-    TabOrder = 13
+    Style = lbOwnerDrawFixed
+    TabOrder = 32
     OnClick = CheckListBox1Click
   end
   object Panel1: TPanel
@@ -75,7 +78,7 @@ object Form1: TForm1
     Height = 32
     Color = clGreen
     ParentBackground = False
-    TabOrder = 21
+    TabOrder = 20
   end
   object GroupBox5: TGroupBox
     Left = 382
@@ -137,7 +140,7 @@ object Form1: TForm1
   end
   object RadioGroup1: TRadioGroup
     Left = 191
-    Top = 0
+    Top = -2
     Width = 97
     Height = 201
     Caption = 'Main tags'
@@ -234,7 +237,7 @@ object Form1: TForm1
   end
   object GroupBox1: TGroupBox
     Left = 294
-    Top = 0
+    Top = -2
     Width = 82
     Height = 216
     Caption = 'Location'
@@ -276,19 +279,41 @@ object Form1: TForm1
       TabOrder = 3
       OnClick = CheckBox4Click
     end
-    object RadioGroup3: TRadioGroup
-      Left = 3
-      Top = 108
-      Width = 73
-      Height = 101
-      Caption = 'Special place'
-      Items.Strings = (
-        'Beach'
-        'Onsen'
-        'Pool'
-        'Stage')
+    object CheckBox24: TCheckBox
+      Left = 11
+      Top = 111
+      Width = 97
+      Height = 17
+      Caption = 'Beach'
       TabOrder = 4
-      OnEnter = RadioGroup3Enter
+      OnClick = CheckBox4Click
+    end
+    object CheckBox25: TCheckBox
+      Left = 11
+      Top = 134
+      Width = 97
+      Height = 17
+      Caption = 'Onsen'
+      TabOrder = 5
+      OnClick = CheckBox4Click
+    end
+    object CheckBox26: TCheckBox
+      Left = 11
+      Top = 157
+      Width = 97
+      Height = 17
+      Caption = 'Pool'
+      TabOrder = 6
+      OnClick = CheckBox4Click
+    end
+    object CheckBox27: TCheckBox
+      Left = 11
+      Top = 180
+      Width = 97
+      Height = 17
+      Caption = 'Stage'
+      TabOrder = 7
+      OnClick = CheckBox4Click
     end
   end
   object RadioGroup4: TRadioGroup
@@ -399,7 +424,7 @@ object Form1: TForm1
       'Studing'
       'Waitress')
     Style = lbOwnerDrawVariable
-    TabOrder = 14
+    TabOrder = 13
     Visible = False
     OnClick = CheckListBox1Click
   end
@@ -408,7 +433,7 @@ object Form1: TForm1
     Top = 217
     Width = 101
     Height = 99
-    TabOrder = 15
+    TabOrder = 14
     Visible = False
     OnClick = CheckListBox1Click
     object RadioGroup7: TRadioGroup
@@ -452,7 +477,7 @@ object Form1: TForm1
       'Tits Vibrator'
       'Forced')
     Style = lbOwnerDrawFixed
-    TabOrder = 16
+    TabOrder = 15
     Visible = False
     OnClick = CheckListBox1Click
   end
@@ -462,7 +487,7 @@ object Form1: TForm1
     Width = 225
     Height = 241
     Caption = 'Group'
-    TabOrder = 17
+    TabOrder = 16
     Visible = False
     OnClick = CheckListBox1Click
     object RadioGroup5: TRadioGroup
@@ -570,7 +595,7 @@ object Form1: TForm1
     Width = 215
     Height = 163
     Caption = 'BDSM'
-    TabOrder = 18
+    TabOrder = 17
     Visible = False
     OnClick = CheckListBox1Click
     object CheckListBox7: TCheckListBox
@@ -626,7 +651,7 @@ object Form1: TForm1
     Width = 340
     Height = 275
     Caption = 'Normal sex'
-    TabOrder = 19
+    TabOrder = 18
     Visible = False
     OnClick = CheckListBox1Click
     object RadioGroup9: TRadioGroup
@@ -788,7 +813,7 @@ object Form1: TForm1
       'Beauty'
       'Etiquette')
     Style = lbOwnerDrawVariable
-    TabOrder = 20
+    TabOrder = 19
     Visible = False
     OnClick = CheckListBox1Click
   end
@@ -801,7 +826,7 @@ object Form1: TForm1
     Caption = 'Reset tags'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 22
+    TabOrder = 21
     OnClick = Button6Click
   end
   object Button7: TButton
@@ -813,7 +838,7 @@ object Form1: TForm1
     Caption = 'Refresh'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 23
+    TabOrder = 22
     OnClick = Button7Click
   end
   object RadioGroup11: TRadioGroup
@@ -831,7 +856,7 @@ object Form1: TForm1
       'Mask')
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 24
+    TabOrder = 23
     OnClick = RadioGroup11Click
   end
   object MaskEdit1: TMaskEdit
@@ -843,7 +868,7 @@ object Form1: TForm1
     Color = clCream
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 25
+    TabOrder = 24
     Text = ''
     OnChange = MaskEdit1Change
   end
@@ -857,7 +882,7 @@ object Form1: TForm1
     ParentShowHint = False
     ReadOnly = True
     ShowHint = True
-    TabOrder = 26
+    TabOrder = 25
   end
   object Button8: TButton
     Left = 606
@@ -868,7 +893,7 @@ object Form1: TForm1
     Caption = 'Generate Mask'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 27
+    TabOrder = 26
     OnClick = Button8Click
   end
   object BitBtn1: TBitBtn
@@ -880,7 +905,7 @@ object Form1: TForm1
     Caption = 'Up'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 28
+    TabOrder = 27
     OnClick = BitBtn1Click
   end
   object BitBtn2: TBitBtn
@@ -892,7 +917,7 @@ object Form1: TForm1
     Caption = 'Down'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 29
+    TabOrder = 28
     OnClick = BitBtn2Click
   end
   object Panel2: TPanel
@@ -907,11 +932,11 @@ object Form1: TForm1
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 30
+    TabOrder = 29
     Visible = False
     object ProgressBar1: TProgressBar
-      Left = 8
-      Top = 10
+      Left = 9
+      Top = 13
       Width = 417
       Height = 44
       TabOrder = 0
@@ -926,20 +951,8 @@ object Form1: TForm1
     Caption = 'Show File'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 31
+    TabOrder = 30
     OnClick = Button9Click
-  end
-  object Button10: TButton
-    Left = 730
-    Top = 12
-    Width = 19
-    Height = 21
-    Hint = 'Remove special clothes tag'
-    Caption = 'X'
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 32
-    OnClick = Button10Click
   end
   object RadioGroup12: TRadioGroup
     Left = 675
@@ -955,7 +968,7 @@ object Form1: TForm1
       'White')
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 33
+    TabOrder = 31
     OnClick = RadioGroup12Click
   end
   object FileOpenDialog1: TFileOpenDialog

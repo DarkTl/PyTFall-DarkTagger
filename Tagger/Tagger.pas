@@ -25,7 +25,6 @@ type
     CheckBox3: TCheckBox;
     CheckBox4: TCheckBox;
     GroupBox5: TGroupBox;
-    RadioGroup3: TRadioGroup;
     RadioGroup4: TRadioGroup;
     GroupBox2: TGroupBox;
     CheckBox5: TCheckBox;
@@ -33,7 +32,6 @@ type
     CheckBox8: TCheckBox;
     CheckBox9: TCheckBox;
     CheckListBox3: TCheckListBox;
-    RadioGroup2: TRadioGroup;
     CheckListBox4: TCheckListBox;
     GroupBox3: TGroupBox;
     CheckBox10: TCheckBox;
@@ -79,10 +77,14 @@ type
     Panel2: TPanel;
     ProgressBar1: TProgressBar;
     Button9: TButton;
-    Button10: TButton;
     Image2: TImage;
     RadioGroup12: TRadioGroup;
     CheckBox23: TCheckBox;
+    CheckBox24: TCheckBox;
+    CheckBox25: TCheckBox;
+    CheckBox26: TCheckBox;
+    CheckBox27: TCheckBox;
+    CheckListBox12: TCheckListBox;
     procedure Button1Click(Sender: TObject);
     procedure FileListBox1Change(Sender: TObject);
     procedure ShowImage;
@@ -144,8 +146,6 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure Image1Click(Sender: TObject);
-    procedure RadioGroup3Enter(Sender: TObject);
-    procedure Button10Click(Sender: TObject);
     procedure Button11Click(Sender: TObject);
     procedure RadioGroup12Click(Sender: TObject);
     procedure CheckBox23Click(Sender: TObject);
@@ -185,8 +185,10 @@ ClearSex;
 ClearOutdoors;
 ClearIndoors;
 radiogroup1.ItemIndex:=-1;
-radiogroup2.ItemIndex:=-1;
-radiogroup3.ItemIndex:=-1;
+checkbox24.Checked:=false;
+checkbox25.Checked:=false;
+checkbox26.Checked:=false;
+checkbox27.Checked:=false;
 checkbox1.Checked:=false;
 checkbox2.Checked:=false;
 checkbox3.Checked:=false;
@@ -199,6 +201,8 @@ for i:= 1 to 14 do
  checklistbox1.Checked[i]:=false;
 for i:= 1 to 7 do
  checklistbox3.Checked[i]:=false;
+for i:= 1 to 15 do
+ checklistbox12.Checked[i]:=false;
 end;
 
 function TForm1.ui(s: string):boolean;  //function checks if index is unique or not
@@ -279,28 +283,29 @@ begin
  if checklistbox3.Checked[5] then s:=s+'-c5';
  if checklistbox3.Checked[6] then s:=s+'-c6';
  if checklistbox3.Checked[7] then s:=s+'-c7';
- if radiogroup2.ItemIndex=0 then s:=s+'-c8';
- if radiogroup2.ItemIndex=1 then s:=s+'-c9';
- if radiogroup2.ItemIndex=2 then s:=s+'-ca';
- if radiogroup2.ItemIndex=3 then s:=s+'-cb';
- if radiogroup2.ItemIndex=4 then s:=s+'-cc';
- if radiogroup2.ItemIndex=5 then s:=s+'-cd';
- if radiogroup2.ItemIndex=6 then s:=s+'-ce';
- if radiogroup2.ItemIndex=7 then s:=s+'-cf';
- if radiogroup2.ItemIndex=8 then s:=s+'-cg';
- if radiogroup2.ItemIndex=9 then s:=s+'-ch';
- if radiogroup2.ItemIndex=10 then s:=s+'-ci';
- if radiogroup2.ItemIndex=11 then s:=s+'-cj';
- if radiogroup2.ItemIndex=12 then s:=s+'-ck';
- if radiogroup2.ItemIndex=13 then s:=s+'-cl';
- if radiogroup2.ItemIndex=14 then s:=s+'-cm';
+
+ if checklistbox12.Checked[1] then s:=s+'-c8';
+ if checklistbox12.Checked[2] then s:=s+'-c9';
+ if checklistbox12.Checked[3] then s:=s+'-ca';
+ if checklistbox12.Checked[4] then s:=s+'-cb';
+ if checklistbox12.Checked[5] then s:=s+'-cc';
+ if checklistbox12.Checked[6] then s:=s+'-cd';
+ if checklistbox12.Checked[7] then s:=s+'-ce';
+ if checklistbox12.Checked[8] then s:=s+'-cf';
+ if checklistbox12.Checked[9] then s:=s+'-cg';
+ if checklistbox12.Checked[10] then s:=s+'-ch';
+ if checklistbox12.Checked[11] then s:=s+'-ci';
+ if checklistbox12.Checked[12] then s:=s+'-cj';
+ if checklistbox12.Checked[13] then s:=s+'-ck';
+ if checklistbox12.Checked[14] then s:=s+'-cl';
+ if checklistbox12.Checked[15] then s:=s+'-cm';
 
  if checkbox1.Checked then s:=s+'-l1'; //location
  if checkbox2.Checked then s:=s+'-l2';
- if radiogroup3.ItemIndex=0 then s:=s+'-l5';
- if radiogroup3.ItemIndex=1 then s:=s+'-l6';
- if radiogroup3.ItemIndex=2 then s:=s+'-l7';
- if radiogroup3.ItemIndex=3 then s:=s+'-l8';
+ if checkbox24.Checked then s:=s+'-l5';
+ if checkbox25.Checked then s:=s+'-l6';
+ if checkbox26.Checked then s:=s+'-l7';
+ if checkbox27.Checked then s:=s+'-l8';
  if checkbox3.Checked then
  begin
    s:=s+'-l3';
@@ -732,9 +737,9 @@ end;
 
 procedure TForm1.LoadName; //for loading tags from file name
 var i,j:integer;
-ctags: array [1..82] of string; //tags that we found in a file name
+ctags: array [1..180] of string; //tags that we found in a file name
 begin
- for i := 1 to 82 do
+ for i := 1 to 180 do
   ctags[i]:= '';
  j:=0;
  cname:= ExtractFileNamewithoutext(FileListBox1.FileName);
@@ -745,7 +750,7 @@ begin
     ctags[j]:= cname[i+1]+cname[i+2]
    end;
  RadioGroup1.ItemIndex:=-1;
- for i:=1 to 82 do
+ for i:=1 to 180 do
    begin
      if MatchText('nn',ctags) then RadioGroup1.ItemIndex:=0;   //main tags
      if MatchText('nd',ctags) then RadioGroup1.ItemIndex:=1;
@@ -781,27 +786,31 @@ begin
      if MatchText('c5',ctags) then checklistbox3.Checked[5]:=true;
      if MatchText('c6',ctags) then checklistbox3.Checked[6]:=true;
      if MatchText('c7',ctags) then checklistbox3.Checked[7]:=true;
-     if MatchText('c8',ctags) then radiogroup2.ItemIndex:=0;
-     if MatchText('c9',ctags) then radiogroup2.ItemIndex:=1;
-     if MatchText('ca',ctags) then radiogroup2.ItemIndex:=2;
-     if MatchText('cb',ctags) then radiogroup2.ItemIndex:=3;
-     if MatchText('cc',ctags) then radiogroup2.ItemIndex:=4;
-     if MatchText('cd',ctags) then radiogroup2.ItemIndex:=5;
-     if MatchText('ce',ctags) then radiogroup2.ItemIndex:=6;
-     if MatchText('cf',ctags) then radiogroup2.ItemIndex:=7;
-     if MatchText('cg',ctags) then radiogroup2.ItemIndex:=8;
-     if MatchText('ch',ctags) then radiogroup2.ItemIndex:=9;
-     if MatchText('ci',ctags) then radiogroup2.ItemIndex:=10;
-     if MatchText('cj',ctags) then radiogroup2.ItemIndex:=11;
-     if MatchText('ck',ctags) then radiogroup2.ItemIndex:=12;
-     if MatchText('cl',ctags) then radiogroup2.ItemIndex:=13;
-     if MatchText('cm',ctags) then radiogroup2.ItemIndex:=14;
-                                                                    //location
 
-     if MatchText('l5',ctags) then radiogroup3.ItemIndex:=0;
-     if MatchText('l6',ctags) then radiogroup3.ItemIndex:=1;
-     if MatchText('l7',ctags) then radiogroup3.ItemIndex:=2;
-     if MatchText('l8',ctags) then radiogroup3.ItemIndex:=3;
+
+
+                                                        //location
+
+     if MatchText('c8',ctags) then checklistbox12.Checked[1]:=true;
+     if MatchText('c9',ctags) then checklistbox12.Checked[2]:=true;
+     if MatchText('ca',ctags) then checklistbox12.Checked[3]:=true;
+     if MatchText('cb',ctags) then checklistbox12.Checked[4]:=true;
+     if MatchText('cc',ctags) then checklistbox12.Checked[5]:=true;
+     if MatchText('cd',ctags) then checklistbox12.Checked[6]:=true;
+     if MatchText('ce',ctags) then checklistbox12.Checked[7]:=true;
+     if MatchText('cf',ctags) then checklistbox12.Checked[8]:=true;
+     if MatchText('cg',ctags) then checklistbox12.Checked[9]:=true;
+     if MatchText('ch',ctags) then checklistbox12.Checked[10]:=true;
+     if MatchText('ci',ctags) then checklistbox12.Checked[11]:=true;
+     if MatchText('cj',ctags) then checklistbox12.Checked[12]:=true;
+     if MatchText('ck',ctags) then checklistbox12.Checked[13]:=true;
+     if MatchText('cl',ctags) then checklistbox12.Checked[14]:=true;
+     if MatchText('cm',ctags) then checklistbox12.Checked[15]:=true;
+
+     if MatchText('l5',ctags) then checkbox24.Checked:=True;
+     if MatchText('l6',ctags) then checkbox25.Checked:=True;
+     if MatchText('l7',ctags) then checkbox26.Checked:=True;
+     if MatchText('l8',ctags) then checkbox27.Checked:=True;
      if MatchText('l1',ctags) then checkbox1.Checked:=true;
      if MatchText('l2',ctags) then checkbox2.Checked:=true;
      if MatchText('l3',ctags) then checkbox3.Checked:=true;
@@ -989,11 +998,6 @@ end;
 end;
 
 
-procedure TForm1.Button10Click(Sender: TObject);
-begin
- RadioGroup2.ItemIndex:=-1;
-end;
-
 procedure TForm1.Button11Click(Sender: TObject);
 begin
   Image2.Canvas.Brush.Color:= ($FFFFFF);
@@ -1157,7 +1161,6 @@ end;
 
 procedure TForm1.CheckBox3Click(Sender: TObject);
 begin
- radiogroup3.ItemIndex:=-1;
  if filelistbox1.Count>0 then panel1.Color:=clred;
  if checkbox3.Checked then begin
   groupbox5.Visible:=true;
@@ -1169,7 +1172,6 @@ end;
 procedure TForm1.CheckBox4Click(Sender: TObject);
 begin
  if filelistbox1.Count>0 then panel1.Color:=clred;
- radiogroup3.ItemIndex:=-1;
  if checkbox4.Checked then radiogroup4.Visible:=true else ClearIndoors;
 end;
 
@@ -1291,6 +1293,7 @@ begin
   CheckListBox7.Color := color_one;
   CheckListBox8.Color := color_one;
   CheckListBox9.Color := color_one;
+  CheckListBox12.Color := color_one;
   CheckListBox1.HeaderBackgroundColor := color_one;
   CheckListBox2.HeaderBackgroundColor := color_one;
   CheckListBox3.HeaderBackgroundColor := color_one;
@@ -1302,6 +1305,7 @@ begin
   CheckListBox7.HeaderBackgroundColor := color_one;
   CheckListBox8.HeaderBackgroundColor := color_one;
   CheckListBox9.HeaderBackgroundColor := color_one;
+  CheckListBox12.HeaderBackgroundColor := color_one;
   Panel2.Color := color_one;
   FileListBox1.Color := color_two;
   Edit1.Color := color_two;
@@ -1317,6 +1321,7 @@ begin
  checklistbox9.Header[0]:=true;
  checklistbox10.Header[0]:=true;
  checklistbox11.Header[0]:=true;
+ checklistbox12.Header[0]:=true;
  dir := ExtractFileDir(Application.ExeName);
 end;
 
@@ -1402,16 +1407,6 @@ if radiogroup1.ItemIndex>3 then
   ClearMast;
   exit;
  end;
-end;
-
-
-procedure TForm1.RadioGroup3Enter(Sender: TObject);
-begin
- if filelistbox1.Count>0 then panel1.Color:=clred;
- ClearIndoors;
- ClearOutdoors;
- checkbox3.Checked:=false;
- checkbox4.Checked:=false;
 end;
 
 procedure TForm1.RadioGroup7Click(Sender: TObject);

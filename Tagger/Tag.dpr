@@ -2,8 +2,7 @@ program Tag;
 
 uses
   Vcl.Forms,
-  Tagger in 'Tagger.pas' {Form1},
-  libwebp in 'libwebp.pas';
+  Tagger in 'Tagger.pas' {Form1};
 
 {$R *.res}
 
